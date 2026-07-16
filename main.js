@@ -76,11 +76,6 @@ const URL_GOOGLE_SHEETS =
 let enviandoConfirmacion = false;
 
 async function enviarWhatsApp() {
-
-  if (enviandoConfirmacion) {
-    return;
-  }
-
   const nombre = document.getElementById("nombre").value.trim();
   const apellido = document.getElementById("apellido").value.trim();
   const personas = document.getElementById("personas").value.trim();
@@ -92,18 +87,9 @@ async function enviarWhatsApp() {
   );
 
   if (!nombre || !apellido || !asistencia) {
-    alert("Completá el nombre, apellido y la asistencia");
+    alert("Completá los datos obligatorios");
     return;
   }
-
-  const datos = new URLSearchParams();
-
-  datos.append("nombre", nombre);
-  datos.append("apellido", apellido);
-  datos.append("asistencia", asistencia.value);
-  datos.append("personas", personas || "No especificado");
-  datos.append("alimentacion", alimentacion || "Ninguno");
-  datos.append("cancion", cancion || "No indicó");
 
   const mensaje = `Hola! Confirmación de asistencia:
 
@@ -118,19 +104,16 @@ Canción: ${cancion || "No indicó"}`;
   const urlWhatsApp =
     `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
 
-  enviandoConfirmacion = true;
+  const datos = new URLSearchParams();
 
-  const boton = document.querySelector(
-    '.form-box button[onclick="enviarWhatsApp()"]'
-  );
-
-  if (boton) {
-    boton.disabled = true;
-    boton.innerText = "Guardando...";
-  }
+  datos.append("nombre", nombre);
+  datos.append("apellido", apellido);
+  datos.append("asistencia", asistencia.value);
+  datos.append("personas", personas || "No especificado");
+  datos.append("alimentacion", alimentacion || "Ninguno");
+  datos.append("cancion", cancion || "No indicó");
 
   try {
-
     await fetch(URL_GOOGLE_SHEETS, {
       method: "POST",
       mode: "no-cors",
@@ -140,29 +123,12 @@ Canción: ${cancion || "No indicó"}`;
       body: datos.toString()
     });
 
-    // Después de guardar, abre WhatsApp.
     window.open(urlWhatsApp, "_blank");
 
   } catch (error) {
+    console.error(error);
 
-    console.error("Error al guardar en Google Sheets:", error);
-
-    const abrirIgualmente = confirm(
-      "No se pudo comprobar el guardado en la planilla. ¿Querés continuar a WhatsApp igualmente?"
-    );
-
-    if (abrirIgualmente) {
-      window.open(urlWhatsApp, "_blank");
-    }
-
-  } finally {
-
-    enviandoConfirmacion = false;
-
-    if (boton) {
-      boton.disabled = false;
-      boton.innerText = "Confirmar";
-    }
+    alert("No se pudo guardar la confirmación");
   }
 }
 
