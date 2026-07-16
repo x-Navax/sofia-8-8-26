@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./imagenes/invitacion-_1_.ico" type="image/x-icon">
+    <title>Mis XV Sofia</title>
+</head>
+<body>
+        <section id="welcome" class="welcome-screen">
+    <div class="welcome-content">
+        <h1>MIS XV SOFIA</h1>
+        <p>QUIERO QUE SEAS PARTE DE ESTA<br>NOCHE INOLVIDABLE</p>
+        <button id="btnIngresar">INGRESAR</button>
+    </div>
+    </section>
+    <header>    <div class="contenedor">
+
+        <img class="nombre" src="./imagenes/sofi.png" alt="">
+    </div>
+    
+        <div class="contador-custom">
+                <div class="bloque">
+                    <span id="dias">00</span>
+                    <p>DÍAS</p>
+                </div>
+                <span class="separador">:</span>
+
+                <div class="bloque">
+                    <span id="horas">00</span>
+                    <p>HORAS</p>
+                </div>
+                <span class="separador">:</span>
+
+                <div class="bloque">
+                    <span id="minutos">00</span>
+                    <p>MINUTOS</p>
+                </div>
+                <span class="separador">:</span>
+
+                <div class="bloque">
+                    <span id="segundos">00</span>
+                    <p>SEGUNDOS</p>
+                </div>
+            </div>
+    </header>
+
+    <main>
+        <div class="frase-box">
+            <div class="linea"></div>
+            <p>PREPARATE PARA BAILAR, REIR Y FESTEJAR MIS XV A LO GRANDE</p>
+            <div class="linea"></div>
+        </div>
+
+        <div class="primeraimg">
+            <img src="./imagenes/00.jpg" alt="">
+        </div>
+
+
+
+
+        <div class="fecha-box">
+            <dotlottie-wc class="svgcalendario" src="https://lottie.host/4f5e281e-2e4e-4022-85f2-f597eb454cd0/rb7dZrtw01.lottie" style="width: 100px;height: 100px" autoplay loop></dotlottie-wc>
+
+                <h2>¿CUÁNDO?</h2>
+                <p>8 DE AGOSTO DE 2026</p>
+                <span>| 20:30 HS |</span>
+            </div>
+
+            <div class="ubicacion-box">
+                            <dotlottie-wc class="ubi"
+            src="https://lottie.host/b28ece4b-f1b4-4647-b197-e1380de615f0/vhHDtcVu8u.lottie"
+            style="width: 300px;height: 300px"
+            autoplay
+            loop
+            ></dotlottie-wc>
+
+                <h2>¿DÓNDE?</h2>
+                <p>CASA VIALE EVENTOS</p>
+
+                <a href="https://www.google.com/maps/place/Casa+Viale+-+Eventos/@-34.1708919,-58.9537167,17z/data=!3m1!4b1!4m6!3m5!1s0x95bb73fc917475d3:0x16c9f5b46ce1af20!8m2!3d-34.1708919!4d-58.9511418!16s%2Fg%2F11w3c42319?entry=ttu&g_ep=EgoyMDI2MDcxMy4wIKXMDSoASAFQAw%3D%3D" class="btn-ubicacion " target="_blank">COMO LLEGAR</a>
+            </div>
+
+            <div class="carousel">
+                <div class="carousel-track">
+                    <img src="./imagenes/02.jpg" class="slide">
+                    <img src="./imagenes/01.jpg" class="slide">
+                </div>
+
+                <button class="btn prev">‹</button>
+                <button class="btn next">›</button>
+                </div>
+        <br>
+
+        <div class="frase-box">
+            <div class="linea"></div>
+            <p>HAGAMOS QUE SEA UNA <br> NOCHE ¡INOLVIDABLE!</p>
+            <div class="linea"></div>
+        </div>
+
+         <div class="ubicacion-box">
+            <dotlottie-wc
+            src="https://lottie.host/62b16a38-9587-4464-a647-5c6f797b1a93/acJFnWl5pY.lottie"
+            style="width: 70px;height: 70px"
+            autoplay
+            loop
+            ></dotlottie-wc>
+
+                <h2>DRESS CODE</h2>
+                <p>ELEGANTE</p>
+            </div>
+
+          <div class="regalos-box">
+            <dotlottie-wc class="regalosvg"
+            src="https://lottie.host/162ff08b-7556-4b04-9435-b4d71a73745e/d2CFdsWzX3.lottie"
+            style="width: 100px;height: 100px"
+            autoplay
+            loop
+            ></dotlottie-wc>
+
+            <h2>REGALOS</h2>
+
+            <p>
+                NADA ES MÁS IMPORTANTE QUE TU PRESENCIA, PERO SI DESEAS HACERME
+                UN PRESENTE PUEDES DEPOSITARLO EN LA SIGUIENTE CUENTA
+            </p>
+
+            <button class="btn-alias" onclick="copiarAlias()">
+                COPIAR ALIAS
+            </button>
+
+            <span id="mensaje-copiado"></span>
+            </div>
+
+              <div class="carousel">
+                <div class="carousel-track">
+                    <img src="./imagenes/03.jpg" class="slide">
+                </div>
+
+                <button class="btn prev">‹</button>
+                <button class="btn next">›</button>
+                </div>
+
+            <div class="form-box">
+                <h2 class="titulo-form">CONFIRMÁ TU ASISTENCIA</h2>
+<p class="subtitulo-form">ANTES DEL 1 DE AGOSTO DEL 2026</p>
+
+        <input type="text" id="nombre" placeholder="Nombre o grupo familiar*">
+        <input type="text" id="apellido" placeholder="Apellido *">
+
+        <label>
+            <input type="radio" name="asistencia" value="Confirmo"> Confirmo
+        </label>
+        <label>
+            <input type="radio" name="asistencia" value="No asiste"> No podré asistir
+        </label>
+
+        <input type="text" id="personas" placeholder="Cantidad de personas">
+        <input type="text" id="alimentacion" placeholder="Requerimiento alimenticio">
+        <input type="text" id="cancion" placeholder="Canción que no puede faltar">
+
+        <button onclick="enviarWhatsApp()">Confirmar</button>
+
+        </div>
+
+        <div class="fondo-box">
+            <img class="fondo" src="./imagenes/fondo.jpeg" alt="">
+        </div>
+
+        
+    </main>
+
+    <footer class="footer-brand">
+
+  <div class="brand">
+    <span>by</span>
+    <img class="pro" src="./imagenes/IMG_4019.PNG" alt=""> <!-- cambiá el nombre -->
+  </div>
+
+  <div class="redes">
+    <a href="https://www.instagram.com/prostage_eventos/?utm_source=ig_web_button_share_sheet" target="_blank">
+      <img src="./imagenes/instagram.png">
+    </a>
+    <a href="https://wa.me/5493487300352" target="_blank">
+      <img src="./imagenes/whatsapp.png">
+    </a>
+  </div>
+
+</footer>
+    <button id="btnMusica" class="btn-musica">
+  ▶
+</button>
+<audio id="musica" src="./imagenes/Rihanna - We Found Love (Album Version).mp3" loop></audio>
+    
+    <script src="main.js"></script>
+<script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.10/dist/dotlottie-wc.js" type="module"></script>
+
+
+
+</body>
+</html>

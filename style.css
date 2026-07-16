@@ -1,0 +1,752 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+.welcome-screen {
+  position: fixed;
+  inset: 0;
+  background: #f7f7f7;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.welcome-content {
+  color:rgb(183, 182, 182);
+  animation: entradaSuave 1.2s ease;
+}
+
+
+
+.welcome-content {
+  color:rgb(183, 182, 182);
+  animation: entradaSuave 1.2s ease forwards;
+}
+
+.welcome-content h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 30px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+}
+
+.welcome-content p {
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: 1px;
+  margin-bottom: 25px;
+}
+
+.welcome-content button {
+  color:rgb(104, 103, 103);
+  color: rgb(179, 176, 176);
+  border: none;
+  padding: 12px 35px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.welcome-content button:hover {
+  color:rgb(127, 127, 127);
+}
+
+.invitacion-oculta {
+  display: none;
+}
+
+.welcome-screen.salir {
+  animation: desaparecer 0.8s ease forwards;
+  pointer-events: none; /* CLAVE */
+}
+
+@keyframes entradaSuave {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes desaparecer {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+
+
+header {
+  background-image: url('./imagenes/fondoC.webp');
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+}
+
+.contenedor {display: flex;
+align-items: center;
+justify-content: center;}
+
+.nombre {
+   width: 22rem;
+   height: auto;
+   margin-top: 220px;
+  
+}
+
+/* CONTADOR */
+
+.contador-custom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+.contador-custom .bloque {
+  text-align: center;
+}
+
+.contador-custom .bloque span {
+  font-size: 36px;
+   color: white;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 450;
+    font-variation-settings:
+    "wdth" 100;
+     text-shadow:
+        0 0 10px rgba(0,0,0,0.7),
+        0 0 20px rgba(0,0,0,0.5),
+        0 4px 10px rgba(0,0,0,0.8);
+}
+
+.contador-custom .bloque p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: white;
+  letter-spacing: 2px;
+   text-shadow:
+        0 0 10px rgba(0,0,0,0.7),
+        0 0 20px rgba(0,0,0,0.5),
+        0 4px 10px rgba(0,0,0,0.8);
+}
+
+.contador-custom .separador {
+  font-size: 36px;
+  color: white;
+  margin: 0 5px;
+  margin-bottom: 20px;
+}
+
+/* MAIN */
+
+.frase-box {
+  text-align: center;
+  padding: 60px 20px;
+  background-image: url('./imagenes/fondoC.webp');
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.frase-box p {
+  color: #ffffff;
+  font-size: 1.2rem;
+  margin: 20px 0;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 350;
+    font-variation-settings:
+    "wdth" 100;
+    text-shadow:
+        0 0 10px rgba(0,0,0,0.7),
+        0 0 20px rgba(0,0,0,0.5),
+        0 4px 10px rgba(0,0,0,0.8);
+}
+
+.frase-box .linea {
+  width: 60%;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.6);
+  margin: 0 auto;
+}
+.welcome-screen {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  min-height: 100dvh;
+  z-index: 99999;
+}
+
+.primeraimg {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  overflow: hidden;
+}
+
+.primeraimg img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* CAROUSEL */
+.carousel {
+  position: relative;
+  max-width: 420px;
+  margin: 40px auto;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  min-width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0);
+  color: white;
+  border: none;
+  font-size: 28px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.btn:hover {
+  background: rgba(0, 0, 0, 0);
+}
+
+/* CALENDARIO */
+
+.fecha-box {
+  background-image: url('./imagenes/fondoC.webp');
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding: 50px 20px;
+  color: white;
+  margin: 20px 0;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 350;
+    font-variation-settings:
+    "wdth" 100;
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+   text-shadow:
+        0 0 10px rgba(0,0,0,0.7),
+        0 0 20px rgba(0,0,0,0.5),
+        0 4px 10px rgba(0,0,0,0.8);
+  
+}
+
+.icono {
+  width: 50px;
+  margin-bottom: 15px;
+  filter: invert(1); /* lo hace blanco */
+}
+
+.fecha-box h2 {
+  font-weight: 400;
+   text-shadow:
+        0 0 10px rgba(0,0,0,0.7),
+        0 0 20px rgba(0,0,0,0.5),
+        0 4px 10px rgba(0,0,0,0.8);
+
+}
+
+.fecha-box p {
+    font-family: "Open Sans", sans-serif;
+    font-size: 1.4rem;
+    
+  margin: 10px 0;
+   text-shadow:
+        0 0 10px rgba(0,0,0,0.7),
+        0 0 20px rgba(0,0,0,0.5),
+        0 4px 10px rgba(0,0,0,0.8);
+}
+
+.fecha-box span {
+    font-family: "Open Sans", sans-serif;
+  font-size: 1.4rem;
+  
+   text-shadow:
+        0 0 10px rgba(0,0,0,0.7),
+        0 0 20px rgba(0,0,0,0.5),
+        0 4px 10px rgba(0,0,0,0.8);
+}
+
+.svgcalendario{
+    align-items: center;
+}
+
+/* UBICACION */
+.ubicacion-box {
+     font-family: "Open Sans", sans-serif;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 60px 20px;
+  display: flex;
+    flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+
+}
+.ubi{
+    margin-top: -40px;
+    margin-bottom: -80px;
+    z-index: -1;
+}
+
+.icono-ubi {
+  width: 50px;
+  margin-bottom: 15px;
+  filter: sepia(1) saturate(2) hue-rotate(10deg) brightness(0.8);
+  opacity: 0.7;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.2rem;
+}
+
+.ubicacion-box h2 {
+  color:rgb(183, 182, 182);
+ font-family: "Open Sans", sans-serif;
+  font-size: 1.2rem;
+}
+
+.ubicacion-box p {
+  color:rgb(183, 182, 182);
+  margin: 10px 0 25px;
+font-family: "Open Sans", sans-serif;
+  font-size: 1.2rem;
+}
+
+.btn-ubicacion {
+  display: inline-block;
+  padding: 10px 25px;
+  border: 1px solid rgb(183, 182, 182);
+  color:rgb(183, 182, 182);
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.btn-ubicacion:hover {
+  background: rgb(183, 182, 182);
+  color: #fff;
+}
+
+.diamante{
+   display: flex;
+    flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-top: -20px;
+}
+
+/* REGALOS */
+
+.regalos-box {
+  background-image: url('./imagenes/fondoC.webp');
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding: 60px 20px;
+  color: white;
+  display: flex;
+    flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  
+}
+
+.icono-regalo {
+  width: 50px;
+  margin-bottom: 15px;
+  filter: invert(1);
+}
+
+.regalos-box h2 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.2rem;
+  text-shadow:
+        0 0 10px rgba(0,0,0,0.7),
+        0 0 20px rgba(0,0,0,0.5),
+        0 4px 10px rgba(0,0,0,0.8);
+ 
+}
+
+.regalos-box p {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  max-width: 400px;
+  margin: 20px auto;
+  line-height: 1.6;
+  text-shadow:
+        0 0 10px rgba(0,0,0,0.7),
+        0 0 20px rgba(0,0,0,0.5),
+        0 4px 10px rgba(0,0,0,0.8);
+
+}
+
+
+.btn-alias {
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 10px 25px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-alias:hover {
+  background: white;
+  color:rgb(183, 182, 182);
+}
+
+#mensaje-copiado {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* FOTOS */
+.polaroid{
+  margin-bottom: -30px;
+  margin-top: -40px;
+}
+.fotos-box {
+  text-align: center;
+  padding: 60px 20px;
+  color:rgb(183, 182, 182);
+   display: flex;
+    flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+
+}
+
+/* Ícono */
+.icono-foto {
+  width: 50px;
+  margin-bottom: 15px;
+  filter: sepia(1) saturate(2) hue-rotate(10deg) brightness(0.8);
+  opacity: 0.7;
+}
+
+/* Título */
+.fotos-box h2 {
+    font-family: "Open Sans", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+/* Texto */
+.fotos-box p {
+    font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  font-size: 14px;
+  line-height: 1.6;
+  letter-spacing: 1px;
+}
+
+/* Hashtag */
+.hashtag {
+    font-family: "Open Sans", sans-serif;
+  font-size: 1.2rem;
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+/* FORMULARIO */
+.form-box input:focus {
+  border-bottom: 1px solid #ff6b81;
+}
+.form-box {
+  position: relative;
+  overflow: hidden;
+  background-image: url('./imagenes/fondoC.webp');
+  background-size: cover;
+  background-position: center;
+  padding: 30px 20px;
+  color: white;
+  max-width: 420px;
+  margin: auto;
+  font-family: Arial, sans-serif;
+  border-radius: 20px;
+}
+
+/* blur blanco abajo */
+
+
+.form-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 0;
+}
+
+/* para que el contenido quede arriba del blur */
+.form-box > * {
+  position: relative;
+  z-index: 1;
+}
+
+.titulo-form {
+     font-family: "Open Sans", sans-serif;
+  font-size: 1.2rem;
+  text-align: center;
+  letter-spacing: 2px;
+  font-weight: 400;
+}
+
+.subtitulo-form {
+     font-family: "Open Sans", sans-serif;
+  font-size: 1rem;
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+/* INPUTS */
+.form-box input[type="text"] {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ffffff80;
+  background: transparent;
+  padding: 10px 0;
+  margin-bottom: 20px;
+  color: white;
+  outline: none;
+  font-size: 14px;
+}
+
+/* PLACEHOLDER */
+.form-box input::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
+/* RADIO */
+.form-box label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.form-box input[type="radio"] {
+  margin-right: 8px;
+}
+
+/* BOTÓN */
+.form-box button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  background: #e6e6e6;
+  color:rgb(183, 182, 182);
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.form-box button:hover {
+  background: white;
+}
+
+/* MENSAJE ERROR (opcional si querés usarlo) */
+.form-box .error {
+  color: #ff6b6b;
+  font-size: 12px;
+  margin-top: -15px;
+  margin-bottom: 10px;
+}
+
+/* SELECT (si lo agregás después) */
+.form-box select {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ffffff80;
+  background: transparent;
+  padding: 10px 0;
+  margin-bottom: 20px;
+  color: white;
+  outline: none;
+}
+
+.fondo-box {
+   margin: 10px;
+}
+
+
+.fondo{ width: 100%
+   
+}
+
+.btn-musica {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+
+ color:#b7b6b6;
+  color: white;
+  border: none;
+
+  font-size: 20px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 9999;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.4s;
+}
+
+/* cuando se activa */
+.btn-musica.activo {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.footer-brand {
+  width: 100%;
+  background-image: url('./imagenes/fondoC.webp');
+  background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(10px);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 12px 20px;
+}
+
+
+.footer-brand {
+  position: relative;
+  overflow: hidden;
+
+  width: 100%;
+  padding: 12px 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-image: url('./imagenes/fondoC.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+/* capa blur */
+.footer-brand::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  background: rgba(255,255,255,0.15);
+
+  z-index: 0;
+}
+
+/* contenido encima */
+.footer-brand .brand,
+.footer-brand .redes {
+  position: relative;
+  z-index: 1;
+}
+
+/* marca */
+.footer-brand .brand span {
+  font-family: "Open Sans", sans-serif;
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+.footer-brand .brand h3 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+/* Redes */
+.footer-brand .redes img {
+  width: 20px;
+
+}
+
+.footer-brand .redes img:hover {
+  transform: scale(1.2);
+}
+
+.redes a {
+  text-decoration: none;
+}
+
+.pro{width: 4rem;
+  margin-top: -10px;
+  margin-bottom: -10px;}
+
