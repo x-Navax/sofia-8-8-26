@@ -76,6 +76,12 @@ const URL_GOOGLE_SHEETS =
 let enviandoConfirmacion = false;
 
 async function enviarWhatsApp() {
+
+  // Evita que se envíe dos veces por doble clic.
+  if (enviandoConfirmacion) {
+    return;
+  }
+
   const nombre = document.getElementById("nombre").value.trim();
   const apellido = document.getElementById("apellido").value.trim();
   const personas = document.getElementById("personas").value.trim();
@@ -89,6 +95,18 @@ async function enviarWhatsApp() {
   if (!nombre || !apellido || !asistencia) {
     alert("Completá los datos obligatorios");
     return;
+  }
+
+  // Busca automáticamente tu botón Confirmar.
+  const botonConfirmar = document.querySelector(
+    '.form-box button[onclick="enviarWhatsApp()"]'
+  );
+
+  enviandoConfirmacion = true;
+
+  if (botonConfirmar) {
+    botonConfirmar.disabled = true;
+    botonConfirmar.innerText = "⏳ Guardando...";
   }
 
   const mensaje = `Hola! Confirmación de asistencia:
@@ -123,12 +141,33 @@ Canción: ${cancion || "No indicó"}`;
       body: datos.toString()
     });
 
+    if (botonConfirmar) {
+      botonConfirmar.innerText = "✅ Abriendo WhatsApp...";
+    }
+
     window.open(urlWhatsApp, "_blank");
 
-  } catch (error) {
-    console.error(error);
+    // Vuelve a dejar disponible el botón luego de abrir WhatsApp.
+    setTimeout(() => {
+      enviandoConfirmacion = false;
 
-    alert("No se pudo guardar la confirmación");
+      if (botonConfirmar) {
+        botonConfirmar.disabled = false;
+        botonConfirmar.innerText = "Confirmar";
+      }
+    }, 2000);
+
+  } catch (error) {
+    console.error("Error al guardar la confirmación:", error);
+
+    alert("No se pudo guardar la confirmación. Intentá nuevamente.");
+
+    enviandoConfirmacion = false;
+
+    if (botonConfirmar) {
+      botonConfirmar.disabled = false;
+      botonConfirmar.innerText = "Confirmar";
+    }
   }
 }
 
