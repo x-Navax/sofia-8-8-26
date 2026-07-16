@@ -67,22 +67,43 @@ function copiarAlias() {
 
 
 // =====================
-// WHATSAPP
+// GOOGLE SHEETS + WHATSAPP
 // =====================
-function enviarWhatsApp() {
 
-  const nombre = document.getElementById("nombre").value;
-  const apellido = document.getElementById("apellido").value;
-  const personas = document.getElementById("personas").value;
-  const alimentacion = document.getElementById("alimentacion").value;
-  const cancion = document.getElementById("cancion").value;
+const URL_GOOGLE_SHEETS =
+  "https://script.google.com/macros/s/AKfycbyfQ5WxRw2681K1cvsIe7wdR5tbNnOKtBuezvLzQT9uWWF6GLfwd6lnReAkUmyBlyQwpQ/exec";
 
-  const asistencia = document.querySelector('input[name="asistencia"]:checked');
+let enviandoConfirmacion = false;
 
-  if (!nombre || !apellido || !asistencia) {
-    alert("Completá los datos obligatorios");
+async function enviarWhatsApp() {
+
+  if (enviandoConfirmacion) {
     return;
   }
+
+  const nombre = document.getElementById("nombre").value.trim();
+  const apellido = document.getElementById("apellido").value.trim();
+  const personas = document.getElementById("personas").value.trim();
+  const alimentacion = document.getElementById("alimentacion").value.trim();
+  const cancion = document.getElementById("cancion").value.trim();
+
+  const asistencia = document.querySelector(
+    'input[name="asistencia"]:checked'
+  );
+
+  if (!nombre || !apellido || !asistencia) {
+    alert("Completá el nombre, apellido y la asistencia");
+    return;
+  }
+
+  const datos = new URLSearchParams();
+
+  datos.append("nombre", nombre);
+  datos.append("apellido", apellido);
+  datos.append("asistencia", asistencia.value);
+  datos.append("personas", personas || "No especificado");
+  datos.append("alimentacion", alimentacion || "Ninguno");
+  datos.append("cancion", cancion || "No indicó");
 
   const mensaje = `Hola! Confirmación de asistencia:
 
@@ -94,9 +115,55 @@ Canción: ${cancion || "No indicó"}`;
 
   const numero = "5493489548466";
 
-  const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+  const urlWhatsApp =
+    `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
 
-  window.open(url, "_blank");
+  enviandoConfirmacion = true;
+
+  const boton = document.querySelector(
+    '.form-box button[onclick="enviarWhatsApp()"]'
+  );
+
+  if (boton) {
+    boton.disabled = true;
+    boton.innerText = "Guardando...";
+  }
+
+  try {
+
+    await fetch(URL_GOOGLE_SHEETS, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: datos.toString()
+    });
+
+    // Después de guardar, abre WhatsApp.
+    window.open(urlWhatsApp, "_blank");
+
+  } catch (error) {
+
+    console.error("Error al guardar en Google Sheets:", error);
+
+    const abrirIgualmente = confirm(
+      "No se pudo comprobar el guardado en la planilla. ¿Querés continuar a WhatsApp igualmente?"
+    );
+
+    if (abrirIgualmente) {
+      window.open(urlWhatsApp, "_blank");
+    }
+
+  } finally {
+
+    enviandoConfirmacion = false;
+
+    if (boton) {
+      boton.disabled = false;
+      boton.innerText = "Confirmar";
+    }
+  }
 }
 
 
